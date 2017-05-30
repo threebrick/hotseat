@@ -9,13 +9,15 @@ server.listen(process.env.port || process.env.PORT || 3978, function () {
 
 // Create chat bot
 var connector = new builder.ChatConnector({
-    //appId: process.env.MICROSOFT_APP_ID,
-    //appPassword: process.env.MICROSOFT_APP_PASSWORD
+ //   appId: process.env.MICROSOFT_APP_ID,
+ //   appPassword: process.env.MICROSOFT_APP_PASSWORD
     appId: 'ecddc570-7040-43c9-830e-2371f505de38',
     appPassword: 'dgkp7Nh3UkPbCf9Uqn61UKK'
 });
 var bot = new builder.UniversalBot(connector);
 server.post('https://hotseatreservation.azurewebsites.net/api/messages', connector.listen());
+//server.post('/api/messages', connector.listen());
+
 
 // Create LUIS recognizer that points at our model and add it as the root '/' dialog for our Cortana Bot.
 var model = 'https://westus.api.cognitive.microsoft.com/luis/v2.0/apps/b775b712-5d48-4234-a325-fcec31f4fbee?subscription-key=8a605684fc204a3ea3c6f29e2a390002&verbose=true';
